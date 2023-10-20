@@ -56,7 +56,7 @@ async def _(event):
     global cancel
     cancel = True
     editable = await event.reply("**Send txt file**")
-    input: Message = await bot.listen(editable.chat.id)
+    
     x =await input.download()
     await input.delete(True)
 
