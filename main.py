@@ -54,7 +54,7 @@ async def _(event):
 async def _(event):
 
     global cancel
-    cancel = False
+    cancel = True
     editable = await event.reply("**Send txt file**")
  
     x =await bot.download_media()
