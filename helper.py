@@ -113,6 +113,16 @@ def parse_vid_info(info):
                 pass
     return new_info
 
+async def send_doc(bot: Client, m: Message,cc,ka,cc1,prog,count,name):
+    reply = await m.reply_text(f"Uploading - `{name}`")
+    time.sleep(1)
+    start_time = time.time()
+    await m.reply_document(ka,caption=cc1)
+    count+=1
+    await reply.delete (True)
+    time.sleep(1)
+    os.remove(ka)
+    time.sleep(3) 
 
 async def download_video(url, name, ytf="bestvideo[height<=720]"):
     cmd = f'yt-dlp -o "{name}" -f "{ytf}+bestaudio" "{url}"'
@@ -132,7 +142,8 @@ async def download_video(url, name, ytf="bestvideo[height<=720]"):
         return f"{name}.mp4"
 
     return name
-
+except FileNotFoundError as exc:
+        return os.path.isfile.splitext[0] + "." + "mp4"
 def old_download(url, file_name, chunk_size = 1024 * 10):
     if os.path.exists(file_name):
         os.remove(file_name)
